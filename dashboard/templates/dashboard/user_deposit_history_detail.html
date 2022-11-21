@@ -1,0 +1,101 @@
+{% extends 'dashboard/__base__.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<main>
+    <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+        <div class="container-fluid">
+            <div class="page-header-content">
+                <div class="row align-items-center justify-content-between pt-3">
+                    <div class="col-auto mb-3">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="user"></i></div>
+                            Account Deposit History
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main page content-->
+    <div class="container mt-4">
+        <!-- Account page navigation-->
+ 		<nav class="nav nav-borders">
+            <a class="nav-link active ml-0" href="{% url 'dashboard:user_detail' pk %}">Profile</a>
+            <a class="nav-link" href="{% url 'dashboard:user_document' pk %}">Documents</a>
+            <a class="nav-link" href="{% url 'dashboard:user_deposit_history' pk %}">Deposit History</a>
+            <a class="nav-link" href="{% url 'dashboard:user_withdraw_history' pk %}">Withdrow History</a>
+            <a class="nav-link" href="{% url 'dashboard:user_account_detail' pk %}">Account</a>
+        </nav>
+        <hr class="mt-0 mb-4" />
+        <!-- Payment methods card-->
+        <div class="card card-header-actions mb-4">
+            <div class="card-header">
+                User Deposit History
+                <!-- <button class="btn btn-sm btn-primary" type="button">All Documents</button> -->
+            </div>
+            <div class="card-body">
+                <!-- Payment method 1-->
+                <div class="d-flex align-items-center justify-content-between">
+                
+
+            <div class="datatable">
+                    <table class="table table-bordered table-hover"  id = 'dataTable' width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Bonus Amount</th>
+                            <th>Transaction Date </th>
+                            <th>Payment Id</th>
+                            <th>Status</th>
+                            <th>View</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Bonus Amount</th>
+                            <th>Transaction Date </th>
+                            <th>Payment Id</th>
+                            <th>Status</th>
+                            <th>View</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                    {% for user_deposit in user_deposit_history %}
+                        <tr>
+                            <td>{{user_deposit.user_id.first_name }}</td>
+                            <td>{{user_deposit.amount }}</td>
+                            <td>{{ user_deposit.bonus_amount }}</td>
+                            <td> {{user_deposit.transaction_date}} </td>
+                            <td> {{ user_deposit.payment_id}} </td>
+                            <td>
+                                    {% if user_deposit.status == 1 %}
+                                        Done
+                                    {% else %}
+                                        Pendding
+                                    {% endif %} 
+                            </td>
+                            <td>   
+                                <a href="{% url 'dashboard:deposit_history_detail' user_deposit.pk %}">
+                                    <button class="btn btn-datatable btn-icon btn-transparent-dark ">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

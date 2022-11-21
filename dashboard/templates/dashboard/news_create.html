@@ -1,0 +1,85 @@
+{% extends 'dashboard/__base__.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<main>
+    <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+        <div class="container">
+            <div class="page-header-content pt-4">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-auto mt-4">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="layout"></i></div>
+                            Create News    
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main page content-->
+    <div class="container mt-n10">
+        <div class="card mb-4">
+
+            <div class="card-header">Create News</div>
+             <div class="card-body">   
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div id="div_id_name" class="form-group"> 
+                        <label for="id_name" class=" requiredField">Name<span class="asteriskField text-danger">*</span> 
+                        </label> 
+                        <div class=""> 
+                            <input type="text" name="name" maxlength="250" class="textinput textInput form-control" required="" id="id_name" required> 
+                        </div> 
+                    </div> 
+                    <div id="div_id_new_type" class="form-group"> 
+                        <label for="id_new_type" class=" requiredField">New type<span class="asteriskField text-danger">*</span> 
+                        </label> 
+                        <div class=""> 
+                            <input type="text" name="new_type" maxlength="250" class="textinput textInput form-control" required="" id="id_new_type" required> 
+                        </div> 
+                    </div> 
+                    <div id="div_id_category" class="form-group"> 
+                        <label for="id_category" class=" requiredField">Category<span class="asteriskField text-danger">*</span> 
+                        </label> 
+                        <div class=""> 
+                            <input type="text" name="category" maxlength="250" class="textinput textInput form-control" required="" id="id_category" required> 
+                        </div> 
+                    </div> 
+                    <div id="div_id_author" class="form-group"> 
+                        <label for="id_author" class=" requiredField">Author<span class="asteriskField text-danger">*</span> 
+                        </label> 
+                        <div class=""> 
+                            <input type="text" name="author" maxlength="250" class="textinput textInput form-control" required="" id="id_author" required> 
+                        </div> 
+                    </div> 
+                    <div id="div_id_video_file" class="form-group"> 
+                        <label for="id_video_file" class="">Video file</label> 
+                        <div class=""> 
+                            <input type="file" name="video_file" class="clearablefileinput form-control-file" id="id_video_file" > 
+                        </div> 
+                    </div> 
+                    <div id="div_id_status" class="form-group"> 
+                        <label for="id_status" class=" requiredField">Status<span class="asteriskField text-danger">*</span> 
+                        </label> 
+                        <div class=""> 
+                            <select name="status" class="select form-control"  id="id_status" required> 
+                                <option value="" selected="">---------</option> 
+                                <option value="1">Active</option> 
+                                <option value="0">Inactive</option>
+                            </select> 
+                        </div> 
+                    </div>
+                    </br>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </form>
+           </div>
+        </div>
+        <div style="height: 100vh"></div>
+    </div>
+</main>
+
+{% endblock content%}
+
+

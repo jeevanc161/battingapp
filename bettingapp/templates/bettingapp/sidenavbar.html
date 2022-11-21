@@ -1,0 +1,164 @@
+{% load static %}
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sidenav shadow-right sidenav-light">
+            <div class="sidenav-menu">
+                <div class="nav accordion" id="accordionSidenav">
+                    <!-- Sidenav Menu Heading (Account)-->
+                    <!-- * * Note: * * Visible only on and above the sm breakpoint-->
+                    <div class="sidenav-menu-heading d-sm-none">Account</div>
+                    <!-- Sidenav Link (Alerts)-->
+                    <!-- * * Note: * * Visible only on and above the sm breakpoint-->   
+                    <a class="nav-link d-sm-none" href="#!">
+                        <div class="nav-link-icon"><i data-feather="bell"></i></div>
+                        Alerts
+                        <span class="badge badge-warning-soft text-warning ml-auto">4 New!</span>
+                    </a>
+                    <!-- Sidenav Link (Messages)-->
+                    <!-- * * Note: * * Visible only on and above the sm breakpoint-->
+                    <a class="nav-link d-sm-none" href="#!">
+                        <div class="nav-link-icon"><i data-feather="mail"></i></div>
+                        Messages
+                        <span class="badge badge-success-soft text-success ml-auto">2 New!</span>
+                    </a>
+                    <!-- Sidenav Menu Heading (Core)-->
+                    <div class="sidenav-menu-heading">Core</div>
+                    <!-- Sidenav Accordion (Dashboard)-->
+                    <a class="nav-link" href="{% url 'bettingapp:betting_dashboard' %}">
+                        <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                        Dashboard
+                    </a>
+                    <!-- Sidenav Heading (App Views)-->
+                    <div class="sidenav-menu-heading">App Views</div>
+                    <!-- Sidenav Accordion (Pages)-->
+                    <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <div class="nav-link-icon"><i data-feather="grid"></i></div>
+                        Users
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapsePages" data-parent="#accordionSidenav">
+                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesMenu">
+                            <a class="nav-link" href="{% url 'bettingapp:users_list' %}">List User</a>  
+                        </nav>
+                    </div>
+
+                    <!-- Nested Sidenav Accordion (Pages -> Authentication)-->
+                    <!-- Sidenav Accordion (Assets)-->
+                    <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseFlows" aria-expanded="false" aria-controls="collapseFlows">
+                        <div class="nav-link-icon"><i data-feather="repeat"></i></div>
+                        Markets
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseFlows" data-parent="#accordionSidenav">
+                        <nav class="sidenav-menu-nested nav">
+
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#normalMarket" aria-expanded="false" aria-controls="normalMarket">
+                            <div class="nav-link-icon"></div>Normal Market
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="normalMarket" data-parent="#accordionSidenavPagesMenu">
+                                <nav class="sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{% url 'bettingapp:normal_market_create' %}">Create</a>
+                                    <a class="nav-link" href="{% url 'bettingapp:normal_market_list' %}">List View</a>
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#starLineMarket" aria-expanded="false" aria-controls="starLineMarket">
+                            <div class="nav-link-icon"></div>Star Line Market
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="starLineMarket" data-parent="#accordionSidenavPagesMenu">
+                                <nav class="sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{% url 'bettingapp:star_line_market_create'%}">Create</a>
+                                    <a class="nav-link" href="{% url 'bettingapp:star_line_market_list' %}">List View</a>
+                                </nav>
+                            </div>
+                            
+                        </nav>
+                    </div>
+
+                    <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#gamePrice" aria-expanded="false" aria-controls="gamePrice">
+                        <div class="nav-link-icon"><i data-feather="grid"></i></div>
+                        Game Price
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="gamePrice" data-parent="#accordionSidenav">
+                        <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesMenu">
+                            <a class="nav-link" href="{% url 'bettingapp:game_price_list' %}">Game List</a>  
+                        </nav>
+                    </div>
+
+
+                    <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="nav-link-icon"><i data-feather="layout"></i></div>
+                        Betting
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseLayouts" data-parent="#accordionSidenav">
+                       <nav class="sidenav-menu-nested nav">
+                            <a class="nav-link" href="{% url 'bettingapp:user_betting_list' %}">List View</a>                                    
+                        </nav>
+                    </div>
+                     <a class="nav-link collapsed" href="{% url 'bettingapp:user_winner_list' %}" >
+                        <div class="nav-link-icon"><i data-feather="layout"></i></div>
+                        Winners
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <!-- Sidenav Heading (UI Toolkit)-->
+                    <div class="sidenav-menu-heading">Payment History</div>
+
+                    <!-- Sidenav Accordion (Layout)-->
+                    <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#TradHistoryLayouts" aria-expanded="false" aria-controls="TradHistoryLayouts">
+                        <div class="nav-link-icon"><i data-feather="layout"></i></div>
+                        Payment History
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="TradHistoryLayouts" data-parent="#accordionSidenav">
+                       <nav class="sidenav-menu-nested nav">
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#depositHistory" aria-expanded="false" aria-controls="depositHistory">
+                            <div class="nav-link-icon"></div> Deposit History
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="depositHistory" data-parent="#accordionSidenavPagesMenu">
+                                <nav class="sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{% url 'bettingapp:user_deposit_history' %}">List View</a>
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#withdrawHistory" aria-expanded="false" aria-controls="withdrawHistory">
+                            <div class="nav-link-icon"></div>Withdrow History
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="withdrawHistory" data-parent="#accordionSidenavPagesMenu">
+                                <nav class="sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{% url 'bettingapp:withdraw_history_list' %}">List View</a>
+                                </nav>
+                            </div>
+                            
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#withdrawRequest" aria-expanded="false" aria-controls="withdrawRequest">
+                            <div class="nav-link-icon"></div>Withdraw Request
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down "></i></div>
+                            </a>
+                            <div class="collapse" id="withdrawRequest" data-parent="#accordionSidenavPagesMenu">
+                                <nav class="sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{% url 'bettingapp:withdraw_request_list' %}">List View</a>
+                                </nav>
+                            </div>
+
+
+                        </nav>
+                    </div>
+                    <!-- Sidenav Accordion (Layout)-->
+                </div>
+            </div>
+            <!-- Sidenav Footer-->
+            <div class="sidenav-footer">
+                  {% if request.user.is_authenticated %}
+                <div class="sidenav-footer-content">
+                    <div class="sidenav-footer-subtitle">Logged in as:</div>
+                    <div class="sidenav-footer-title">{{ request.user.username }}</div>
+                </div>
+                {% endif %}
+            </div>
+        </nav>
+    </div>

@@ -1,0 +1,153 @@
+{% load static %}
+<div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sidenav shadow-right sidenav-light">
+                    <div class="sidenav-menu">
+                        <div class="nav accordion" id="accordionSidenav">
+                            <!-- Sidenav Menu Heading (Account)-->
+                            <!-- * * Note: * * Visible only on and above the sm breakpoint-->
+                            <div class="sidenav-menu-heading d-sm-none">Account</div>
+                            <!-- Sidenav Link (Alerts)-->
+                            <!-- * * Note: * * Visible only on and above the sm breakpoint-->   
+                            <a class="nav-link d-sm-none" href="#!">
+                                <div class="nav-link-icon"><i data-feather="bell"></i></div>
+                                Alerts
+                                <span class="badge badge-warning-soft text-warning ml-auto">4 New!</span>
+                            </a>
+                            <!-- Sidenav Link (Messages)-->
+                            <!-- * * Note: * * Visible only on and above the sm breakpoint-->
+                            <a class="nav-link d-sm-none" href="#!">
+                                <div class="nav-link-icon"><i data-feather="mail"></i></div>
+                                Messages
+                                <span class="badge badge-success-soft text-success ml-auto">2 New!</span>
+                            </a>
+                            <!-- Sidenav Menu Heading (Core)-->
+                            <div class="sidenav-menu-heading">Core</div>
+                            <!-- Sidenav Accordion (Dashboard)-->
+                            <a class="nav-link" href="{% url 'dashboard:admin_index' %}">
+                                <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                                Dashboard
+                            </a>
+                            <!-- Sidenav Heading (App Views)-->
+                            <div class="sidenav-menu-heading">App Views</div>
+                            <!-- Sidenav Accordion (Pages)-->
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="nav-link-icon"><i data-feather="grid"></i></div>
+                                Users
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages" data-parent="#accordionSidenav">
+                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPagesMenu">
+                                    <a class="nav-link" href="{% url 'dashboard:user_list' %}">List User</a>
+                                    
+                                </nav>
+                            </div>
+
+                            <!-- Nested Sidenav Accordion (Pages -> Authentication)-->
+                            <!-- Sidenav Accordion (Assets)-->
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseFlows" aria-expanded="false" aria-controls="collapseFlows">
+                                <div class="nav-link-icon"><i data-feather="repeat"></i></div>
+                                Assets
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseFlows" data-parent="#accordionSidenav">
+                                <nav class="sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{% url 'dashboard:assets_create' %}">Create Asset</a>
+                                    <a class="nav-link" href="{% url 'dashboard:assets_list' %}">Assets List</a>
+                                    
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#pagesCollapseAccount" aria-expanded="false" aria-controls="pagesCollapseAccount">
+                            <div class="nav-link-icon"><i class="fas fa-book-medical"></i></div>            Deposit History
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="pagesCollapseAccount" data-parent="#accordionSidenavPagesMenu">
+                                <nav class="sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{% url 'dashboard:deposit_history_list' %}">Deposit History</a>
+
+                                </nav>
+                            </div>
+
+
+                            <!-- Sidenav Accordion (Layout)-->
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#TradHistoryLayouts" aria-expanded="false" aria-controls="TradHistoryLayouts">
+                                <div class="nav-link-icon"><i data-feather="layout"></i></div>
+                                Trad History
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="TradHistoryLayouts" data-parent="#accordionSidenav">
+                               <nav class="sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{% url 'dashboard:trad_history_list' %}">Trad List</a>
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="nav-link-icon"><i data-feather="layout"></i></div>
+                                News
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts" data-parent="#accordionSidenav">
+                               <nav class="sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{% url 'dashboard:news_create' %}">Create News</a>
+                                    <a class="nav-link" href="{% url 'dashboard:news_list' %}">News List</a>
+                                    
+                                </nav>
+                            </div>
+                            <!-- Sidenav Heading (UI Toolkit)-->
+                            <div class="sidenav-menu-heading">Withdrow History</div>
+
+
+                            <!-- Sidenav Accordion (Layout)-->
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#depositLayouts" aria-expanded="false" aria-controls="depositLayouts">
+                                <div class="nav-link-icon"><i data-feather="layout"></i></div>
+                                Deposit Offers
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="depositLayouts" data-parent="#accordionSidenav">
+                               <nav class="sidenav-menu-nested nav">
+                                    
+                                    <a class="nav-link" href="{% url 'dashboard:deposit_offer_create' %}">Create Offer</a>
+                                    <a class="nav-link" href="{% url 'dashboard:deposit_offer_list' %}">Offers List</a>
+                                </nav>
+                            </div>
+
+
+                            <!-- Sidenav Accordion (Layout)-->
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#WithdrawHistoryLayouts" aria-expanded="false" aria-controls="WithdrawHistoryLayouts">
+                                <div class="nav-link-icon"><i data-feather="layout"></i></div>
+                                Withdraw History
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="WithdrawHistoryLayouts" data-parent="#accordionSidenav">
+                               <nav class="sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{% url 'dashboard:withdraw_history_list' %}">Withdrow List</a>
+                                </nav>
+                            </div>
+
+                            <!-- Sidenav Accordion (Layout)-->
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#WithdrawRequestLayouts" aria-expanded="false" aria-controls="WithdrawRequestLayouts">
+                                <div class="nav-link-icon"><i data-feather="layout"></i></div>
+                                Withdraw Request
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="WithdrawRequestLayouts" data-parent="#accordionSidenav">
+                               <nav class="sidenav-menu-nested nav">
+                                    
+                                    <a class="nav-link" href="{% url 'dashboard:withdraw_request_create' %}">Create Request</a>
+                                    <a class="nav-link" href="{% url 'dashboard:withdraw_request_list' %}">Request List</a>
+                                </nav>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Sidenav Footer-->
+                    <div class="sidenav-footer">
+                          {% if request.user.is_authenticated %}
+                        <div class="sidenav-footer-content">
+                            <div class="sidenav-footer-subtitle">Logged in as:</div>
+                            <div class="sidenav-footer-title">{{ request.user.username }}</div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </nav>
+            </div>

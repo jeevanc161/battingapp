@@ -1,0 +1,84 @@
+{% extends 'dashboard/__base__.html' %}
+{% load static %}
+
+{% block content %}
+  	<main>
+		<header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+		    <div class="container">
+		        <div class="page-header-content pt-4">
+		            <div class="row align-items-center justify-content-between">
+		                <div class="col-auto mt-4">
+		                    <h1 class="page-header-title">
+		                        <div class="page-header-icon"><i data-feather="filter"></i></div>
+		                         {{assets.name}}
+		                    </h1>
+		                    <!-- <div class="page-header-subtitle">List of all Asserts</div> -->
+
+		                </div>
+        
+		            </div>
+		        </div>
+		    </div>
+		</header>
+<!-- Example DataTable for Dashboard Demo-->
+ 	<div class="container mt-n10">
+      <div class="card card-header-actions mb-4">
+					
+        <div class="card-header">
+            Assert Detail
+            <a href="{% url 'dashboard:assets_update' assets.pk %}">
+            <button class="btn btn-sm btn-primary  pull-right" type="button">Edit Detail</button>
+            </a>
+        </div>
+
+        <div class="card-body">
+          <div class="datatable"></div>
+	              <div class="form-row">
+                    <!-- Form Group (first name)-->
+                    <div class="form-group col-md-6">
+                        <!-- <label class="small mb-1" for="inputFirstName">Icon</label> -->
+                        <img class="img-account-profile  mb-1" height="150px" width="100px" src="/media/{{assets.icon}}" alt="Upload Icon !!!" />
+                    </div>
+                    <!-- Form Group (last name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputLastName">Current Market Price</label>
+                         <p> <strong>{{assets.current_market_price}}</strong> </p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <!-- Form Group (first name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Yesterday Price</label>
+                        <p> <strong>{{assets.yesterday_price}}</strong> </p>
+                    </div>
+                    <!-- Form Group (last name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputLastName">Returns</label>
+                         <p> <strong>{{assets.returns}}</strong> </p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <!-- Form Group (first name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">increament/decreament</label>
+                        <p> <strong>{{assets.increament_decreament}}</strong> </p>
+                    </div>
+                    <!-- Form Group (last name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputLastName">Status</label>
+                         <p> <strong>
+                             {% if asset.active == True %}
+                            <div class="badge badge-primary badge-pill">Active</div>
+                            {% else %}
+                            <div class="badge badge-danger badge-pill">Deactive</div>    
+                            {% endif %} 
+                         </strong> </p>
+                    </div>
+                </div>
+	    		</div>
+			</div>
+    </div>
+</main>
+
+
+{% endblock content %}

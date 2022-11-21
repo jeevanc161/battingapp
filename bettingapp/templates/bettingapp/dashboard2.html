@@ -1,0 +1,168 @@
+{% extends 'bettingapp/__base__.html' %}
+
+{% load static %}
+{% block content %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<main>
+    <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+        <div class="container">
+            <div class="page-header-content pt-4">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-auto mt-4">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="activity"></i></div>
+                            Betting Dashboard 
+                        </h1>
+                        <div class="page-header-subtitle">dashboard overview and content summary</div>
+                    </div>
+                <!--     <div class="col-12 col-xl-auto mt-4">
+                        <button class="btn btn-white p-3" id="reportrange">
+                            <i class="mr-2 text-primary" data-feather="calendar"></i>
+                            <span></span>
+                            <i class="ml-1" data-feather="chevron-down"></i>
+                        </button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main page content-->
+    <div class="container mt-n10">
+        <div class="row">
+            <div class="col-xxl-4 col-xl-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body h-100 d-flex flex-column justify-content-center py-5 py-xl-4">
+                        <div class="row align-items-center">
+                            <div class="col-xl-8 col-xxl-12">
+                                <div class="text-center text-xl-left text-xxl-center px-4 mb-4 mb-xl-0 mb-xxl-4">
+                                    <h1 class="text-primary">Welcome to Betting App Dashboard</h1>
+                                    <p class="text-gray-700 mb-0">Browse our fully designed UI toolkit! Browse our prebuilt app pages, components, and utilites !!!</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-xxl-12 text-center"><img class="img-fluid" src="{% static 'assets/img/illustrations/at-work.svg' %}" style="max-width: 26rem" /></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Example Colored Cards for Dashboard Demo-->
+        
+        <a class="card lift bg-success" href="{% url 'bettingapp:normal_market_list' %}">
+            <div class="card-body text-lg text-white">Main Market List </div>
+        </a>
+        <br>
+
+        <div class="row">
+            {% for bidding_user in main_bidding_users %}
+
+            <div class="col-xxl-3 col-lg-4">
+                <div class="card {% if forloop.counter|divisibleby:2 %}bg-warning{% else %}bg-success{% endif %} text-white mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="mr-3">
+                                <div class="text-lg font-weight-bold">{{bidding_user.market_id__name}}</div>
+                                <div class=" font-weight-bold">
+                                    User's :- {{ bidding_user.total_users }}
+                                    <i class="fas fa-users "> </i>
+                                </div>
+                                <div class=" font-weight-bold">
+                                    Amount :- {{ bidding_user.total_amount}} 
+                                    <i class="fas fa-rupee-sign "></i>
+                                </div>
+                            </div>
+                            <!-- <i class="fas fa-users fa-2x"></i> -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square feather-xl text-white-50"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+        <a class="card lift bg-info" href="{% url 'bettingapp:star_line_market_list' %}">
+            <div class="card-body text-lg text-white">Star Line Market Game </div>
+        </a>
+        <br>
+
+        <div class="row">
+            {% for bidding_user in star_line_bidding_users %}
+            <div class="col-xxl-3 col-lg-4">
+                <div class="card {% if forloop.counter|divisibleby:2 %}bg-warning{% else %}bg-success{% endif %} text-white mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="mr-3">
+                                <div class="text-lg font-weight-bold">{{bidding_user.market_id__name}}</div>
+                                <div class=" font-weight-bold">
+                                    User's :- {{ bidding_user.total_users}}
+                                    <i class="fas fa-users "> </i>
+                                </div>
+                                <div class=" font-weight-bold">
+                                    Amount :- {{ bidding_user.total_amount}}
+                                    <i class="fas fa-rupee-sign "></i>
+                                </div>
+                            </div>
+                            <!-- <i class="fas fa-users fa-2x"></i> -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square feather-xl text-white-50"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+                <div class="row">
+
+            <div class="col-xxl-6 col-lg-6">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="mr-3">
+                                <div class="text-lg font-weight-bold">Total Deposit</div>
+                                <div class=" font-weight-bold">
+                                    User's :- {{ withdraw_total_users.user_id__count}}
+                                    <i class="fas fa-users "> </i>
+                                </div>
+                                <div class=" font-weight-bold">
+                                    Amount :- {{ withdraw_total_amount.amount__sum}} 
+                                    <i class="fas fa-rupee-sign "></i>
+                                </div>
+                            </div>
+                            <!-- <i class="fas fa-users fa-2x"></i> -->
+                            <i class="fas fa-rupee-sign fa-2x"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-xxl-6 col-lg-6">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="mr-3">
+                                <div class="text-lg font-weight-bold">Total Withdraw</div>
+                                <div class=" font-weight-bold">
+                                    User's :- {{ deposit_total_users.user_id__count}}
+                                    <i class="fas fa-users "> </i>
+                                </div>
+                                <div class=" font-weight-bold">
+                                    Amount :- {{ deposit_total_amount.amount__sum}}
+                                    <i class="fas fa-rupee-sign "></i>
+                                </div>
+                            </div>
+                            <!-- <i class="fas fa-users fa-2x"></i> -->
+                             <i class="fas fa-rupee-sign fa-2x"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+{% endblock %}

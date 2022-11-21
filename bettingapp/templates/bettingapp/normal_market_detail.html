@@ -1,0 +1,181 @@
+{% extends 'bettingapp/__base__.html' %}
+{% load static %}
+
+{% block content %}
+  	<main>
+		<header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+		    <div class="container">
+		        <div class="page-header-content pt-4">
+		            <div class="row align-items-center justify-content-between">
+		                <div class="col-auto mt-4">
+		                    <h1 class="page-header-title">
+		                        <div class="page-header-icon"><i data-feather="filter"></i></div>
+		                         {{normal_market.name}}
+		                    </h1>
+		                    <!-- <div class="page-header-subtitle">List of all Asserts</div> -->
+
+		                </div>
+
+                        <div class="col-auto mt-4">
+                            <a href="{% url 'bettingapp:main_market_declare_result' normal_market.pk %}">
+                                <button class="btn btn-lg btn-warning " type="button">Declare Result</button>
+                            </a>
+                        </div>
+        
+		            </div>
+		        </div>
+		    </div>
+		</header>
+<!-- Example DataTable for Dashboard Demo-->
+ 	<div class="container mt-n10">
+      <div class="card card-header-actions mb-4">
+					
+        <div class="card-header">
+            Normal Market Detail
+            {% if normal_market.market_type == 0 %}
+            <a href="{% url 'bettingapp:normal_market_update' normal_market.pk %}">
+            <button class="btn btn-sm btn-primary  pull-right" type="button">Edit Detail</button>
+            </a>
+            {% else %}
+            <a href="{% url 'bettingapp:star_line_market_update' normal_market.pk %}">
+            <button class="btn btn-sm btn-primary  pull-right" type="button">Edit Detail</button>
+            </a>
+            {% endif %}
+        </div>
+
+        <div class="card-body">
+          <div class="datatable"></div>
+	            <div class="form-row">
+                    <!-- Form Group (first name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputLastName">Status</label>
+                        <p class="mb-1"> <strong>
+                             {% if normal_market.status == 1 %}
+                            <div class="badge badge-primary badge-pill">Batting is Running Now</div>
+                            {% else %}
+                            <div class="badge badge-danger badge-pill">Betting is Closed For Today</div>    
+                            {% endif %} 
+                         </strong> </p>
+                         
+                    </div>
+
+                    <div class="form-group col-md-6">
+                         <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Market Type</label>
+        
+                         <p class="mb-1"> <strong>
+                             {% if normal_market.market_type == 0 %}
+                            <div class="badge badge-primary badge-pill">Main Market</div>
+                            {% else %}
+                            <div class="badge badge-danger badge-pill">Star Line</div>    
+                            {% endif %} 
+                         </strong> </p>
+                    </div>
+                    </div>
+                </div>
+                <div class="form-row">
+
+                     <!-- Form Group (last name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputLastName">Market Open Time</label>
+                         <p> <strong>{{normal_market.open_time}}</strong> </p>
+                    </div>
+
+                    <!-- Form Group (first name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Market Close Time</label>
+                        <p> <strong>{{normal_market.close_time}}</strong> </p>
+                    </div>
+                
+                </div>
+                <div class="form-row">
+                    <!-- Form Group (first name)-->
+                    <!-- Form Group (last name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputLastName">Market Open Result Time</label>
+                         <p> <strong>{{normal_market.open_result_time}}</strong> </p>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Market Close Result Time</label>
+                        <p> <strong>{{normal_market.close_result_time}}</strong> </p>
+                    </div>
+                    <!-- Form Group (last name)-->
+                   
+                </div>
+
+ 
+                <div class="form-row">
+                    <!-- Form Group (first name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Market open single Result</label>
+                         <p> <strong>{{normal_market.open_single_result}}</strong> </p>
+                    </div>
+                    <!-- Form Group (last name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputLastName">Market Open Tiple Result</label>
+                         <p> <strong>{{normal_market.open_triple_result}}</strong> </p>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- Form Group (first name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Market Close Single Result</label>
+                         <p> <strong>{{normal_market.close_single_result}}</strong> </p>
+                    </div>
+                    <!-- Form Group (last name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputLastName">Market Close Triple Result</label>
+                         <p> <strong>{{normal_market.close_triple_result}}</strong> </p>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- Form Group (first name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Market Close Jodi Result</label>
+                         <p> <strong>{{normal_market.close_jodi_result}}</strong> </p>
+                    </div>
+                    <!-- Form Group (last name)-->
+                     <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Final Result</label>
+                         <p> 
+                            <strong class=" text-danger">
+                         {% if normal_market.open_triple_result == None or normal_market.open_triple_result == '' %}
+                            *** - 
+                        {% else %}
+                            {{ normal_market.open_triple_result }} -
+                        {% endif %}
+                        {% if normal_market.open_single_result == None or normal_market.open_single_result == '' %}
+                             * -  
+                        {% else %}
+                            {{ normal_market.open_single_result }} -
+                        {% endif %}
+                        {% if normal_market.close_single_result == None or normal_market.close_single_result == '' %}
+                            * - 
+                        {% else %}
+                            {{ normal_market.close_single_result }} -
+                        {% endif %}
+                        {% if normal_market.close_triple_result == None or normal_market.close_triple_result == '' %}
+                            ***  
+                        {% else %}
+                            {{ normal_market.close_triple_result }}
+                        {% endif %}
+
+
+                            </strong> 
+                        </p>
+                    </div>
+                     
+
+                </div>
+
+
+	    		</div>
+			</div>
+    </div>
+</main>
+
+
+{% endblock content %}

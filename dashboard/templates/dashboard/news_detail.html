@@ -1,0 +1,118 @@
+{% extends 'dashboard/__base__.html' %}
+
+{% load static %}
+
+{% block content %}
+<main>
+    <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+        <div class="container-fluid">
+            <div class="page-header-content">
+                <div class="row align-items-center justify-content-between pt-3">
+                    <div class="col-auto mb-3">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="user"></i></div>
+                           News Detail - {{ news.name }}
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main page content-->
+    <div class="container mt-4">
+        <!-- Account page navigation-->
+        <nav class="nav nav-borders">
+            <a class="nav-link active ml-0" href="account-profile.html">News</a>
+        </nav>
+        <hr class="mt-0 mb-4" />
+        <div class="row">
+            <div class="col-xl-4">
+                <!-- Profile picture card-->
+                <div class="card">
+                    <div class="card-header">News Video</div>
+                    <div class="card-body text-center">
+                        <!-- Profile picture image-->
+                        <video width="280" height="240" controls>
+                              <source src="/media/{{news.video_file}}" type="video/mp4">
+                              <source src="movie.ogg" type="video/ogg">
+                              Your browser does not support the video tag.
+                        </video>
+                        <!-- Profile picture help block-->
+                       <!--  <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div> -->
+                        <!-- Profile picture upload button-->
+                       <!--  <button class="btn btn-primary" type="button">Upload new image</button> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <!-- Account details card-->
+                <div class="card mb-4">
+                    <div class="card-header">Account Details</div>
+                    <div class="card-body">
+
+                            <!-- Form Row-->
+                            <div class="form-row">
+                                <!-- Form Group (first name)-->
+                                <div class="form-group col-md-6">
+                                    <label class="small mb-1" for="inputFirstName">Name</label>
+                                    <p> <strong>{{news.name}}</strong> </p>
+                                </div>
+                                <!-- Form Group (last name)-->
+                                <div class="form-group col-md-6">
+                                    <label class="small mb-1" for="inputLastName">Date</label>
+                                     <p> <strong>{{news.date}}</strong> </p>
+                                </div>
+                            </div>
+                            <!-- Form Row        -->
+                            <!-- Form Row-->
+                            <div class="form-row">
+                                <!-- Form Group (first name)-->
+                                <div class="form-group col-md-6">
+                                    <label class="small mb-1" for="inputFirstName">Time</label>
+                                    <p> <strong>{{news.time}}</strong> </p>
+                                </div>
+                                <!-- Form Group (last name)-->
+                                <div class="form-group col-md-6">
+                                    <label class="small mb-1" for="inputLastName">News Type</label>
+                                     <p> <strong>{{ news.new_type }}</strong> </p>
+                                </div>
+                            </div>
+                            <!-- Form Row        -->
+                            <!-- Form Row-->
+                            <div class="form-row">
+                                <!-- Form Group (first name)-->
+                                <div class="form-group col-md-6">
+                                    <label class="small mb-1" for="inputFirstName">Category</label>
+                                    <p><strong>{{news.category }}</strong> </p>
+                                </div>
+                                <!-- Form Group (last name)-->
+                                <div class="form-group col-md-6">
+                                    <label class="small mb-1" for="inputLastName">Author</label>
+                                     <p><strong>{{ news.author }}</strong> </p>
+                                </div>   
+                            </div>
+                            <!-- Form Row        -->
+                               <!-- Form Row-->
+                            <div class="form-row">
+                                <!-- Form Group (first name)-->
+                                <div class="form-group col-md-6">
+                                    <label class="small mb-1" for="inputFirstName">Status</label>
+                                    <p> <strong>
+                                        {% if news.status == 1 %}
+                                         <div class="badge badge-primary badge-pill">Active</div>
+                                    {% else %}
+                                        <div class="badge badge-danger badge-pill">Deactive</div>
+                                    {% endif %} 
+                                    </strong> </p>
+                                </div>
+
+                            </div>
+                            <!-- Form Row        -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}

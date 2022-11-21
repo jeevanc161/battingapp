@@ -1,0 +1,53 @@
+{% extends 'dashboard/__base__.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<main>
+    <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+        <div class="container-fluid">
+            <div class="page-header-content">
+                <div class="row align-items-center justify-content-between pt-3">
+                    <div class="col-auto mb-3">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="user"></i></div>
+                           Profile
+                        </h1>
+                    </div>
+                </div12>
+            </div>
+        </div>
+    </header>
+    <!-- Main page content-->
+    <div class="container  ">
+        <!-- <hr class="mt-0 mb-4" /> -->
+        <!-- <div class="row mb-12"> -->
+                <!-- Account details card-->
+                <div class="card mb-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card-header">Create a New User</div>
+                        </div>
+                        <div class="col-md-6">
+                            {% if messages %}
+                            {% for msg in messages %}
+                            <div class="card-header text-end">
+                              {{ msg }}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">  
+                            {% csrf_token %}
+                            {{form|crispy}}
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </form>
+                    </div>
+                </div>    
+        <!-- </div> -->
+    </div>
+</main>
+{% endblock content %}

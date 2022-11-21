@@ -1,0 +1,175 @@
+{% extends 'dashboard/__base__.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<main>
+    <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+        <div class="container-fluid">
+            <div class="page-header-content">
+                <div class="row align-items-center justify-content-between pt-3">
+                    <div class="col-auto mb-3">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="user"></i></div>
+                           Profile
+                        </h1>
+                    </div>
+                </div12>
+            </div>
+        </div>
+    </header>
+    <!-- Main page content-->
+    <div class="container  ">
+        <!-- <hr class="mt-0 mb-4" /> -->
+        <!-- <div class="row mb-12"> -->
+                <!-- Account details card-->
+                <div class="card mb-12">
+                        <div class="card-header">Edit User Account Details </div>
+                        {% if messages %}
+                        {% for msg in messages %}
+                        <div class="card-header text-end text-success">
+                          {{ msg }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                    
+                    <div class="card-body">
+                        <form method="POST" enctype="multipart/form-data">  
+                            {% csrf_token %}
+                        <!-- Form Group (username)-->
+                        <div class="form-group">
+                            <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="{{form.username.value}}" name= 'username' />
+                        </div>
+                        <div class="form-group">
+                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" name = 'email' value="{{form.email.value}}" />
+                        </div>
+                        <!-- Form Row-->
+                        <div class="form-row">
+                            <!-- Form Group (first name)-->
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputFirstName">First name</label>
+                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="{{form.first_name.value}}" name = 'first_name'/>
+                            </div>
+                            <!-- Form Group (last name)-->
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputLastName">Last name</label>
+                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" name  = 'last_name'value="{{form.last_name.value}}" />
+                            </div>
+                        </div>
+                        <!-- Form Row        -->
+                        <div class="form-row">
+                            <!-- Form Group (organization name)-->
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Middle name</label>
+                                <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" name= 'middle_name'value="{{form.middle_name.value}}" />
+                            </div>
+                            <!-- Form Group (location)-->
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputLocation">Country</label>
+                               {{form.country}}
+                            </div>
+                        </div>
+
+                        <!-- Form Row-->
+                        <div class="form-row">
+                            <!-- Form Group (phone number)-->
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputPhone">Phone number</label>
+                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" name = 'phone_number' value="{{form.phone_number.value}}" />
+                            </div>
+                            <!-- Form Group (birthday)-->
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputBirthday">Birthday</label>
+                                <input class="form-control" id="inputBirthday" type="date" name="birthday" value = '{{form.dob.value}}' name="dob" />
+                            </div>
+                        </div>
+
+                          <!-- Form Row-->
+                        <div class="form-row">
+                            <!-- Form Group (first name)-->
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputFirstName">City</label>
+                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" name = 'city' value="{{form.city.value}}" />
+                            </div>
+                            <!-- Form Group (last name)-->
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputLastName">Bank Account Number</label>
+                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="{{form.bank_account_number.value}}" name = 'bank_account_number' />
+                            </div>
+                        </div>
+                        <!-- Form Row        -->
+                        <div class="form-row">
+                            <!-- Form Group (organization name)-->
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Bank name</label>
+                                <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="{{form.bank_name.value}}" name= 'bank_name' />
+                            </div>
+                            <!-- Form Group (location)-->
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputLocation">IFSC Code</label>
+                                <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="{{form.ifsc_code.value}}" />
+                            </div>
+                        </div>
+                         <!-- Form Row        -->
+                        <div class="form-row">
+                            <!-- Form Group (organization name)-->
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Wallet Amount</label>
+                                <input class="form-control" id="inputOrgName" type="text" name='wallet_amount' value = '{{form.wallet_amount.value}}' />
+                            </div>
+                            <!-- Form Group (location)-->
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputLocation">Total Bonus Amount</label>
+                                <input class="form-control" id="inputLocation" type="text" name='total_bonus_amount' value = '{{form.total_bonus_amount.value}}' />
+                            </div>
+                        </div>
+                        <!-- Form Group (email address)-->
+                        <div class="form-row">
+                            <!-- Form Group (organization name)-->
+                                <label class="small mb-1" for="inputOrgName">Account Opening Bonus</label>
+                                <input class="form-control" id="inputOrgName" type="text" name='account_opening_bonus' value = '{{form.account_opening_bonus.value}}' />
+                          
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <!-- Form Group (organization name)-->
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Profile Picture</label>
+                                <br>
+                                {{form.profile_picture}}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Aadhar Card</label>
+                                <br>
+                                {{form.aadhar_card}}
+                            </div>
+                          
+                        </div>
+                        <br>
+        
+                        <div class="form-row">
+                            <!-- Form Group (organization name)-->
+                            <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Pen Card</label>
+                                <br>
+                                {{form.pen_card}}
+                            </div>
+                             <div class="form-group col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Bank Passbook</label>
+                                <br>
+                                {{form.bank_passbook}}
+                            </div>
+                          
+                        </div>
+                        <br>
+                        <!-- Save changes button-->
+                        <button class="btn btn-primary" type="submit">Save changes</button>
+                        </form>
+                    </div>
+                </div>    
+        <!-- </div> -->
+    </div>
+</main>
+{% endblock content %}

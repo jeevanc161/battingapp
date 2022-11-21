@@ -1,0 +1,97 @@
+{% extends 'dashboard/__base__.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<main>
+    <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+        <div class="container-fluid">
+            <div class="page-header-content">
+                <div class="row align-items-center justify-content-between pt-3">
+                    <div class="col-auto mb-3">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="user"></i></div>
+                            Account Documents
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main page content-->
+    <div class="container mt-4">
+        <!-- Account page navigation-->
+ 		<nav class="nav nav-borders">
+            <a class="nav-link active ml-0" href="{% url 'dashboard:user_detail' user_document.pk %}">Profile</a>
+            <a class="nav-link" href="{% url 'dashboard:user_document' user_document.pk %}">Documents</a>
+            <a class="nav-link" href="{% url 'dashboard:user_deposit_history' user_document.pk %}">Deposit History</a>
+            <a class="nav-link" href="{% url 'dashboard:user_withdraw_history' user_document.pk %}">Withdrow History</a>
+            <a class="nav-link" href="{% url 'dashboard:user_account_detail' user_document.pk %}">Account</a>
+        </nav>
+        <hr class="mt-0 mb-4" />
+        <!-- Payment methods card-->
+        <div class="card card-header-actions mb-4">
+            <div class="card-header">
+                User Documents
+                <!-- <button class="btn btn-sm btn-primary" type="button">All Documents</button> -->
+            </div>
+            <div class="card-body">
+                <!-- Payment method 1-->
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                    <strong>Aadhar Card</strong> 	
+                    <div class="ml-3">
+                    {% if user_document.aadhar_card %}
+                     <a href="/media/{{user_document.aadhar_card}}">{{user_document.aadhar_card}}</a> 
+                    {% else %}
+                    	file not uploaded !!!!!
+                    {% endif %}
+                  	</div>                      
+                    </div>
+                    <!-- <div class="ml-4 small">
+                        <a href="#!">Download</a>
+                    </div> -->
+                </div>
+                <hr />
+                <!-- Payment method 2-->
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                    <strong>Pen Card</strong> 	
+                    <div class="ml-5">
+                    {% if user_document.pen_card %}
+                    <a href="/media/{{user_document.pen_card}}">{{user_document.pen_card}}</a> 
+                      
+                    {% else %}
+                    	file not uploaded !!!!!
+                    {% endif %}
+                  	</div>                      
+                    </div>
+                   <!--  <div class="ml-4 small">
+                        <a href="#!">Download</a>
+                    </div>  -->               
+                </div>
+                <hr />
+                <!-- Payment method 3-->
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                       <strong>Bank Passbook</strong> 	
+                    <div class="ml-3">
+                    {% if user_document.bank_passbook %}
+                    <a href="/media/{{user_document.bank_passbook}}">{{user_document.bank_passbook}}</a>
+                      
+                    {% else %}
+                    	file not uploaded !!!!!
+                    {% endif %}
+                  	</div>                      
+                    </div>
+                   <!--  <div class="ml-4 small">
+                        <a href="#!">Download</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

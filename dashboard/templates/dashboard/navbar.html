@@ -1,0 +1,73 @@
+ {% load static %}
+ <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
+            <!-- Navbar Brand-->
+            <!-- * * Tip * * You can use text or an image for your navbar brand.-->
+            <!-- * * * * * * When using an image, we recommend the SVG format.-->
+            <!-- * * * * * * Dimensions: Maximum height: 32px, maximum width: 240px-->
+            <a class="navbar-brand" href="{% url 'dashboard:admin_index' %}">Allwiners Admin</a>
+            <!-- Sidenav Toggle Button-->
+            <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle"><i data-feather="menu"></i></button>
+            <!-- Navbar Search Input-->
+            <!-- * * Note: * * Visible only on and above the md breakpoint-->
+            <form class="form-inline mr-auto d-none d-md-block mr-3">
+                <div class="input-group input-group-joined input-group-solid">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                    <div class="input-group-append">
+                        <div class="input-group-text"><i data-feather="search"></i></div>
+                    </div>
+                </div>
+            </form>
+
+
+            <li class="nav-item dropdown no-caret d-none d-sm-block mr-3">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <div class="font-weight-500">Application Type</div>
+                    <i class="fas fa-chevron-right dropdown-arrow"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right py-0 mr-sm-n15 mr-lg-0 o-hidden animated--fade-in-up" aria-labelledby="navbarDropdownDocs">
+                    <a class="dropdown-item py-3 bg-warning" href="{% url 'dashboard:admin_index' %}" target="_blank">
+                        <div class="icon-stack bg-primary-soft text-primary mr-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div>
+                        <div>
+                            <!-- <div class="small text-gray-500">All Winner Application</div> -->
+                            All Winner Application
+                        </div>
+                    </a>
+                    <div class="dropdown-divider m-0"></div>
+                    <a class="dropdown-item py-3 bg-info" href="{% url 'bettingapp:betting_dashboard' %}" target="_blank">
+                        <div class="icon-stack bg-primary-soft text-primary mr-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+                        <div>
+                            <!-- <div class="small text-gray-500">Betting Application</div> -->
+                            Betting Application
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <!-- Navbar Items-->
+            <ul class="navbar-nav align-items-center ml-auto">
+                <!-- User Dropdown-->
+                <li class="nav-item dropdown no-caret mr-3 mr-lg-0 dropdown-user">
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="{% static 'assets/img/illustrations/profiles/profile-1.png' %}" /></a>
+                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
+                        <h6 class="dropdown-header d-flex align-items-center">
+                            {% if request.user.is_authenticated %}
+                            <img class="dropdown-user-img" src="{% static 'assets/img/illustrations/profiles/profile-1.png' %} " />
+                            <div class="dropdown-user-details">
+                                <div class="dropdown-user-details-name">{{request.user.username}}</div>
+                                <div class="dropdown-user-details-email">{{request.user.email}}</div>
+                            </div>
+                            {% endif %}
+                        </h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'dashboard:user_detail' user.pk %}">
+                            <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
+                            Account
+                        </a>
+                        <a class="dropdown-item" href="{% url 'dashboard:logout' %}">
+                            <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
+                            Logout
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav> 
+

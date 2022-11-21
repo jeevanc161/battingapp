@@ -1,0 +1,83 @@
+{% extends 'bettingapp/__base__.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<main>
+    <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+        <div class="container-fluid">
+            <div class="page-header-content">
+                <div class="row align-items-center justify-content-between pt-3">
+                    <div class="col-auto mb-3">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="user"></i></div>
+                           Game Price Update
+                        </h1>
+                    </div>
+                </div12>
+            </div>
+        </div>
+    </header>
+    <!-- Main page content-->
+    <div class="container ">
+        <!-- <hr class="mt-0 mb-4" /> -->
+        <!-- <div class="row mb-12"> -->
+                <!-- Account details card-->
+                <div class=" card mb-12">
+                    <div class="card-header">Update Game Price</div>
+                    {% if messages %}
+                    {% for msg in messages %}
+                    <div class="card-header text-end text-success">
+                      {{ msg }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                    <div class="card-body">
+                         <form method="post"  enctype="multipart/form-data">
+                            {% csrf_token %}
+                    <!-- Form Group (username)-->
+                    <div class="form-group">
+                        <label class="small mb-1" for="inputUsername">Game Price Name</label>
+                        <input class="form-control" id="inputUsername" type="text" placeholder="Game Price Name" name = 'name' value= '{{form.name.value}}' required/>
+                    </div>
+
+                    <!-- Form Row-->
+                    <div class="form-row">
+                        <!-- Form Group (last name)-->
+                    
+
+                        <!-- Form Group (organization name)-->
+                        <div class="form-group col-md-6">
+                            <label class="small mb-1" for="inputOrgName">Bet Amount</label>
+                            <input class="form-control" id="inputOrgName" type="number" placeholder="Return" name= 'bet_amount' value= '{{form.bet_amount.value}}'  />
+                        </div>
+                        <!-- Form Group (last name)-->
+                        <div class="form-group col-md-6">
+                            <label class="small mb-1" for="inputLastName">Win Amount</label>
+                            <input class="form-control" id="inputLastName" type="number" placeholder="Open Time" name="win_amount"value= '{{form.win_amount.value}}'   />
+                        </div>
+                        <!-- Form Group (location)-->
+                    </div>
+
+                    <!-- Form Row-->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="small mb-1" for="inputLastName">Market Type</label>
+                            {{form.market_type}}
+                        </div>
+                    </div>
+                    </br>
+                    <!-- Save changes button-->
+                    <button class="btn btn-primary" type="submit">Update</button>
+                    
+
+                        </form>
+                    </div>
+                </div>    
+        <!-- </div> -->
+    </div>
+</main>
+
+{% endblock content %}

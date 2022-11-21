@@ -1,0 +1,102 @@
+{% extends 'bettingapp/__base__.html' %}
+{% load static %}
+
+{% block content %}
+
+<main>
+    <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+        <div class="container">
+            <div class="page-header-content pt-4">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-auto mt-4">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="layout"></i></div>
+                            Deposit History Details - {{deposit_history.user_id.first_name}}    
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main page content-->
+    <div class="container mt-n10">
+        <div class="card mb-4">
+            <div class="card-header">Deposit History Details</div>
+            <div class="card-body">
+
+                <div class="form-row">
+                    <!-- Form Group (first name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">User Name </label>
+                        <p> <strong>{{deposit_history.user_id.first_name}}</strong> </p>
+                    </div>
+                    <!-- Form Group (last name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputLastName">Amount</label>
+                         <p> <strong>{{deposit_history.amount}}</strong> </p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <!-- Form Group (first name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Transaction Date</label>
+                        <p> <strong>{{deposit_history.transaction_date}}</strong> </p>
+                    </div>
+                    <!-- Form Group (last name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputLastName">Transaction Time</label>
+                         <p> <strong>{{deposit_history.transaction_time}}</strong> </p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <!-- Form Group (first name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Payment ID</label>
+                        <p> <strong>{{deposit_history.payment_id}}</strong> </p>
+                    </div>
+                    <!-- Form Group (last name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputLastName">Payment Source</label>
+                         <p> <strong>{{deposit_history.payment_source}}</strong> </p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <!-- Form Group (first name)-->
+                    <div class="form-group col-md-3">
+                        <label class="small mb-0" for="inputFirstName">Status</label>
+                        <p> <strong>
+                            {% if deposit_history.status == 0 %}
+                                <div class="badge badge-warning badge-pill">Pending</div>
+                            {% endif%}
+                            {% if deposit_history.status == 1 %}
+                                <div class="badge badge-primary badge-pill">Success</div>
+                            {% endif%}
+                            {% if deposit_history.status == 2 %}
+                                <div class="badge badge-danger badge-pill">Decline</div>
+                            {% endif%}
+                        </strong> </p>
+                    </div>
+                </div>
+           </div>
+        </div>
+        <div style="height: 100vh"></div>
+    </div>
+</main>
+
+{% endblock content%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,92 @@
+{% extends 'bettingapp/__base__.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+    <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+        <div class="container">
+            <div class="page-header-content pt-4">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-auto mt-4">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="layout"></i></div>
+                            Update Star Line Market    
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main page content-->
+    <div class="container mt-n10">
+        <div class="card mb-4">
+
+            <div class="card-header">Update Star Line Market</div>
+            {% if messages %}
+            {% for msg in messages %}
+            <div class="card-header text-end text-success">
+              {{ msg }}
+            </div>
+            {% endfor %}
+            {% endif %}
+             <div class="card-body">
+                <form method="post">
+                    {% csrf_token%}
+                    
+                    <!-- Form Group (username)-->
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputUsername">Market Name</label>
+                                <input class="form-control" id="inputUsername" type="text" placeholder="Enter Market Name" name = 'name' value="{{form.name.value}}" required/>
+                            </div>
+
+                            <!-- Form Row-->
+                            <div class="form-row">
+
+
+                                <!-- Form Group (organization name)-->
+                                <div class="form-group col-md-6">
+                                    <label class="small mb-1" for="inputOrgName">Time</label>
+                                    <input class="form-control" id="inputOrgName" type="time" placeholder="Return" value="{{form.close_time.value|time:'H:i'}}" name= 'close_time' />
+                                </div>
+                                <!-- Form Group (location)-->
+
+                                 <div class="form-group col-md-6">
+                                    <label class="small mb-1" for="inputOrgName">Result  Time</label>
+                                    <input class="form-control" id="inputOrgName" type="time" placeholder="Return" value="{{form.open_result_time.value|time:'H:i'}}" name='open_result_time' />
+                                </div>
+                            </div>
+
+                            
+                            <!-- Form Row        -->
+                            <div class="form-row">
+                                
+                                <!-- Form Group (first name)-->
+                                <div class="form-group col-md-6">
+                                    <label class="small mb-1" for="inputFirstName">Market Type </label>
+                                    {{ form.market_type}}
+                                </div>
+
+                                <div id="div_id_status" class="form-group col-md-6"> 
+                                    <label for="id_status" class="requiredField mb-1">Status<span class="asteriskField text-danger">*</span>
+                                    </label> 
+                                    {{form.status}}
+                                </div>
+
+                            </div>
+                          
+                        
+                        </br>
+
+                            <!-- Save changes button-->
+                            <button class="btn btn-primary" type="submit">Save</button>
+                        
+
+
+                </form>
+           </div>
+        </div>
+        <div style="height: 100vh"></div>
+    </div>
+</main>
+
+{% endblock content%}

@@ -1,0 +1,114 @@
+{% extends 'dashboard/__base__.html' %}
+{% load static %}
+
+{% block content %}
+
+  <main>
+		<header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+		    <div class="container">
+		        <div class="page-header-content pt-4">
+		            <div class="row align-items-center justify-content-between">
+		                <div class="col-auto mt-4">
+
+		                    <h1 class="page-header-title">
+		                        <div class="page-header-icon"><i data-feather="filter"></i></div>
+		                        Assets
+		                    </h1>
+		                    <div class="page-header-subtitle">List of all Assets</div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</header>
+<!-- Example DataTable for Dashboard Demo-->
+ 		<div class="container mt-n10">
+      <div class="card mb-4">
+            <div class="row">
+            	<div class="col-md-6">
+            		<div class="card-header">Assets Data Table</div>
+            			</div class='col-md-6'>
+            			 <div class="col-md-6">
+                      {% if messages %}
+                      {% for msg in messages %}
+                      <div class="card-header text-end">
+                        {{ msg }}
+                      </div>
+                      {% endfor %}
+                      {% endif %}
+                  </div> 
+								<div>
+								</div>            		
+            </div>    
+       	<div class="card-body">
+          <div class="datatable">
+              <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+	                <thead>
+	                    <tr>
+	                        <th>Name</th>
+	                        <th>C M P</th>
+	                        <th>Yesterday Price</th>
+	                        <th>Returns</th>
+	                        <th>Inc/Dec</th>
+	                        <th>Status</th>
+	                        <th>Edit Delete</th>
+	                    </tr>
+	                </thead>
+	                <tfoot>
+	                    <tr>
+	                        <th>Name</th>
+	                        <th>C M P</th>
+	                        <th>Yesterday Price</th>
+	                        <th>Returns</th>
+	                        <th>Inc/Dec</th>
+	                        <th>Status</th>
+	                        <th>Edit Delete</th>
+	                    </tr>
+	                </tfoot>
+	                <tbody>
+	                {% for asset in assets %}
+	                    <tr>
+	                        <td>{{asset.name }}</td>
+	                        <td>{{asset.current_market_price}} </td>
+	                        <td>{{ asset.yesterday_price}} </td>
+	                        <td>{{ asset.returns}} </td>
+	                        <td>{{ asset.increament_decreament}} </td>
+	                        <td> 
+	                        		{% if asset.active == True %}
+	                        		<div class="badge badge-primary badge-pill">Active</div>
+	                         			
+	                        		{% else %}
+	                        		<div class="badge badge-danger badge-pill">Deactive</div>
+	                        			
+	                        		{% endif %}	
+	                        </td>
+	                        <td>
+	                        	<a href="{% url 'dashboard:assets_delete' asset.id %}" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete this item')">
+	                        		<button class="btn btn-datatable btn-icon btn-transparent-dark">
+	                           		<i data-feather="trash-2"></i>
+	                           	</button>
+	                        	</a>
+                         		<a href="{% url 'dashboard:assets_detail' asset.pk %}">
+	                            	<button class="btn btn-datatable btn-icon btn-transparent-dark ">
+	                            	<i class="fas fa-eye"></i>
+	                            </button>
+	                          </a>
+
+	                          <a href="{% url 'dashboard:assets_update' asset.pk %}" >
+	                            	<button class="btn btn-datatable btn-icon btn-transparent-dark">
+	                            	<i class="fas fa-user-edit"></i>
+	                            </button>
+	                          </a>
+	                            
+	                        </td>
+	                    </tr>
+	                {% endfor %}
+	                </tbody>
+	            </table>
+	        </div>
+	    	</div>
+			</div>
+		</div>
+	</main>
+
+
+{% endblock content %}

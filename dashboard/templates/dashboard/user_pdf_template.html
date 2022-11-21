@@ -1,0 +1,52 @@
+{% load static %}
+<html>
+    <head>
+        <title>PDF EXPORT </title>
+          <style>
+            table, th, td {
+              border: 1px solid black;
+              border-collapse: collapse;
+              text-align: center;
+            }
+            th {
+                  padding: 5px;
+                }
+            td{
+                padding-top: 2px;
+
+            }
+            </style>
+    </head>
+    <body>
+         <h1 style="text-align: center; color: green;">User Table</h1>
+         <p style="text-align: center;  "><strong>All User Details in pdf</strong></p>
+        <table style="width:100%">
+            <thead>
+                <tr style="color: blue;">
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Date of Joining</th>
+                    <th>Wallet Amount</th>
+                    <!-- <th>Bonus Amount </th> -->
+                    <!-- <th>Opening Bonus</th> -->
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{user.first_name }}</td>
+                    <td>{{user.last_name }}</td>
+                    <td >{{user.email }}</td>
+                    <td> {{user.phone_number}} </td>
+                    <td> {{ user.account_created_date }} </td>
+                    <td> {{ user.wallet_amount }} </td>
+                    <!-- <td> {{ user.total_bonus_amount }} </td> -->
+                    <!-- <td> {{ user.account_opening_bonus }} </td> -->
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>

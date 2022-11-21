@@ -1,0 +1,101 @@
+{% extends 'bettingapp/__base__.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<main>
+    <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+        <div class="container">
+            <div class="page-header-content pt-4">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-auto mt-4">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="layout"></i></div>
+                            Declare Results -  {{main_market.name }}  
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main page content-->
+    <div class="container  mt-n10 ">
+        <!-- <hr class="mt-0 mb-4" /> -->
+        <!-- <div class="row mb-12"> -->
+                <!-- Account details card-->
+                <div class=" card mb-12">
+                            <div class="card-header">{{main_market.name}}</div>                    
+                            {% if messages %}
+                            {% for msg in messages %}
+                            <div class="card-header text-end text-success">
+                              {{ msg }}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                       
+                    
+                    <div class="card-body">
+                         <form method="post"  enctype="multipart/form-data">
+                            {% csrf_token %} 
+                            <!-- Form Group (username)-->
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label class="small mb-1" for="inputUsername">Main Open Triple Result</label>
+                                    <input class="form-control" id="inputUsername" type="number" placeholder="Enter Main Open Market Result" name = 'open_triple_result' value= '{{form.open_triple_result.value}}' />
+                                </div>
+                                 <div class="form-group col-md-6">
+                                    <label class="small mb-1" for="inputLastName">Main Open Single Market Result </label>
+                                    <input class="form-control" id="inputLastName" type="number" placeholder="Main Open Single Market Result" name="open_single_result" value= '{{form.open_single_result.value}}'  />
+                                </div>
+
+                            </div>
+
+                            <!-- Form Row-->
+                            <div class="form-row">
+                                <!-- Form Group (last name)-->
+                               
+                                <!-- Form Group (last name)-->
+                                <div class="form-group col-md-6">
+                                    <label class="small mb-1" for="inputLastName">Main CLose Triple Result</label>
+                                    <input class="form-control" id="inputLastName" type="number" placeholder="Main CLose Triple Result" name="close_triple_result"value= '{{form.close_triple_result.value}}'   />
+                                </div>
+                                <!-- Form Group (organization name)-->
+                                <div class="form-group col-md-6">
+                                    <label class="small mb-1" for="inputOrgName">Main Close Single Result</label>
+                                    <input class="form-control" id="inputOrgName" type="number" placeholder="Main Close Single Result" name= 'close_single_result' value= '{{form.close_single_result.value}}'  />
+                                </div>
+                                <!-- Form Group (location)-->
+
+                            </div>
+
+                            <!-- Form Row-->
+                            <div class="form-row">
+
+                                
+                                
+                                <!-- Form Group (organization name)-->
+                                <div class="form-group col-md-6">
+                                    <label class="small mb-1" for="inputOrgName">Main Close Jodi Result</label>
+                                    <input class="form-control" id="inputOrgName" type="number" placeholder="Return" name= 'close_jodi_result' 
+                                    value= "{{form.close_jodi_result.value}}"/>
+                                </div>
+                                <!-- Form Group (location)-->
+
+                            </div>
+                          
+                        
+                        </br>
+
+                            <!-- Save changes button-->
+                            <button class="btn btn-primary" type="submit">Save</button>
+                        
+
+                        </form>
+                    </div>
+                </div>    
+        <!-- </div> -->
+    </div>
+</main>
+
+{% endblock content %}

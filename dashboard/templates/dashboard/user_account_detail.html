@@ -1,0 +1,90 @@
+{% extends 'dashboard/__base__.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<main>
+    <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
+        <div class="container-fluid">
+            <div class="page-header-content">
+                <div class="row align-items-center justify-content-between pt-3">
+                    <div class="col-auto mb-3">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="user"></i></div>
+                            Account Deposit History
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main page content-->
+    <div class="container mt-4">
+        <!-- Account page navigation-->
+        <nav class="nav nav-borders">
+            <a class="nav-link active ml-0" href="{% url 'dashboard:user_detail' user_account.pk %}">Profile</a>
+            <a class="nav-link" href="{% url 'dashboard:user_document' user_account.pk %}">Documents</a>
+            <a class="nav-link" href="{% url 'dashboard:user_deposit_history' user_account.pk %}">Deposit History</a>
+            <a class="nav-link" href="{% url 'dashboard:user_withdraw_history' user_account.pk %}">Withdrow History</a>
+            <a class="nav-link" href="{% url 'dashboard:user_account_detail' user_account.pk %}">Account</a>
+        </nav>
+
+        <hr class="mt-0 mb-4" />
+        <!-- Payment methods card-->
+        <div class="card card-header-actions mb-4">
+            <div class="card-header">
+                User Account Details
+                <!-- <button class="btn btn-sm btn-primary" type="button">All Documents</button> -->
+            </div>
+            <div class="card-body">
+                <!-- Payment method 1-->
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                    <strong>Account Number</strong>    
+                    <div class="ml-3">
+                        {{user_account.bank_account_number}}
+                    </div>                      
+                    </div>
+                    <!-- <div class="ml-4 small">
+                        <a href="#!">Download</a>
+                    </div> -->
+                </div>
+                <hr />
+                <!-- Payment method 2-->
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                    <strong>Bank Name</strong>   
+                    <div class="ml-5">
+                        {{user_account.bank_name}}
+                    </div>                      
+                    </div>
+                   <!--  <div class="ml-4 small">
+                        <a href="#!">Download</a>
+                    </div>  -->               
+                </div>
+                <hr />
+                <!-- Payment method 3-->
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                       <strong>IFSC Code</strong>   
+                    <div class="ml-5">
+                    {{user_account.ifsc_code}}
+                    </div>                      
+                    </div>
+                   <!--  <div class="ml-4 small">
+                        <a href="#!">Download</a>
+                    </div> -->
+                </div>
+            </div>
+    </div>
+</main>
+
+{% endblock %}
+
+
+
+
+
+                
+                

@@ -1,0 +1,113 @@
+{% extends 'bettingapp/__base__.html' %}
+{% load static %}
+
+{% block content %}
+  	<main>
+		<header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+		    <div class="container">
+		        <div class="page-header-content pt-4">
+		            <div class="row align-items-center justify-content-between">
+		                <div class="col-auto mt-4">
+		                    <h1 class="page-header-title">
+		                        <div class="page-header-icon"><i data-feather="filter"></i></div>
+		                         Betting Detail 
+		                    </h1>
+		                    <!-- <div class="page-header-subtitle">List of all Asserts</div> -->
+
+		                </div>
+        
+		            </div>
+		        </div>
+		    </div>
+		</header>
+<!-- Example DataTable for Dashboard Demo-->
+ 	<div class="container mt-n10">
+      <div class="card card-header-actions mb-4">
+					
+        <div class="card-header">
+            Betting Detail
+        </div>
+
+        <div class="card-body">
+          <div class="datatable"></div>
+	            <div class="form-row">
+                    <!-- Form Group (first name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputLastName">User Name</label>
+                        <p class="mb-1"> 
+                            <strong>
+                                {{ user_betting.user_id.username}}
+                            </strong> 
+                        </p>        
+                    </div>
+                   
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Market Name</label>
+                        <p class="mb-1"> 
+                            <strong>
+                                {{ user_betting.market_id.name}}
+                            </strong> 
+                        </p>
+                    </div>
+                </div>
+                <div class="form-row">
+                     <!-- Form Group (last name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputLastName">Market Bidding Type</label>
+                        <p> 
+                            <strong>
+                                {{ user_betting.market_game_bidding_type_id.name}}
+                            </strong> 
+                        </p>
+                    </div>
+
+                    <!-- Form Group (first name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Market Type</label>
+                        <p> <strong>{{user_betting.market_type}}</strong> </p>
+                    </div>
+                
+                </div>
+                <div class="form-row">
+                    <!-- Form Group (last name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputLastName">Game Category</label>
+                         <p> <strong>{{ user_betting.game_category}}</strong> </p>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Bidding Digit</label>
+                        <p> <strong>{{ user_betting.bidding_digit}} </strong> </p>
+                    </div>              
+                </div>
+
+                <div class="form-row">
+                    <!-- Form Group (first name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Bidding Points</label>
+                         <p> <strong>{{ user_betting.bidding_points}}</strong> </p>
+                    </div>
+                    <!-- Form Group (last name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputLastName">Bidding Date</label>
+                         <p> <strong>{{ user_betting.bidding_date}}</strong> </p>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- Form Group (first name)-->
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Bidding Time</label>
+                        <p> 
+                            <strong>{{ user_betting.bidding_time}}</strong> 
+                        </p>
+                    </div>                  
+                </div>
+
+	    		</div>
+			</div>
+    </div>
+</main>
+
+
+{% endblock content %}

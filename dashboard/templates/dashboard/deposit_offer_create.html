@@ -1,0 +1,71 @@
+{% extends 'dashboard/__base__.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<main>
+    <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+        <div class="container">
+            <div class="page-header-content pt-4">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-auto mt-4">
+                        <h1 class="page-header-title">
+                            <div class="page-header-icon"><i data-feather="layout"></i></div>
+                            Create Offer    
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main page content-->
+    <div class="container mt-n10">
+        <div class="card mb-4">
+
+            <div class="card-header">Create Deposit Offer</div>
+             <div class="card-body">
+                <form method="post">
+                    {% csrf_token%}
+                    
+                        <div id="div_id_name" class="form-group"> 
+                            <label for="id_name" class=" requiredField">Name<span class="asteriskField text-danger">*</span> 
+                            </label> 
+                            <div class=""> 
+                                <input type="text" name="name" maxlength="250" class="textinput textInput form-control" required id="id_name" required> 
+                            </div> 
+                        </div> 
+                        <div id="div_id_deposit_amount" class="form-group"> 
+                            <label for="id_deposit_amount" class=" requiredField">Deposit amount<span class="asteriskField text-danger">*</span> 
+                            </label> 
+                            <div class=""> 
+                                <input type="number" name="deposit_amount" value="0.0" step="any" class="numberinput form-control"  id="id_deposit_amount" required>  
+                            </div> 
+                        </div> 
+                        <div id="div_id_bonus_amount" class="form-group"> 
+                            <label for="id_bonus_amount" class=" requiredField">Bonus amount<span class="asteriskField text-danger">*</span> 
+                            </label> 
+                            <div class=""> 
+                                <input type="number" name="bonus_amount" value="0.0" step="any" class="numberinput form-control" required id="id_bonus_amount" required> 
+                            </div> 
+                        </div> 
+                        <div id="div_id_status" class="form-group"> 
+                            <label for="id_status" class=" requiredField">Status<span class="asteriskField text-danger">*</span> 
+                            </label> 
+                            <div class=""> 
+                                <select name="status" class="select form-control" required id=" id_status"> 
+                                    <option value="" selected="">---------</option> 
+                                    <option value="1">Active</option> 
+                                    <option value="0">Inactive</option>
+                                </select> 
+                            </div> 
+                        </div>
+                        <br>
+                     <button type="submit" class="btn btn-primary">Create</button>
+                </form>
+           </div>
+        </div>
+        <div style="height: 100vh"></div>
+    </div>
+</main>
+
+{% endblock content%}

@@ -1,0 +1,94 @@
+{% extends 'bettingapp/__base__.html' %}
+{% load static %}
+
+{% block content %}
+
+  <main>
+		<header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+		    <div class="container">
+		        <div class="page-header-content pt-4">
+		            <div class="row align-items-center justify-content-between">
+		                <div class="col-auto mt-4">
+
+		                    <h1 class="page-header-title">
+		                        <div class="page-header-icon"><i data-feather="filter"></i></div>
+		                        Game Price 
+		                    </h1>
+		                    <div class="page-header-subtitle">List of all Game Price</div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</header>
+<!-- Example DataTable for Dashboard Demo-->
+ 		<div class="container mt-n10">
+      <div class="card mb-4">
+            		<div class="card-header">Game Price Table</div>
+                {% if messages %}
+                {% for msg in messages %}
+                <div class="card-header text-end">
+                  {{ msg }}
+                </div>
+                {% endfor %}
+                {% endif %}
+          		
+       	<div class="card-body">
+          <div class="datatable">
+              <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+	                <thead>
+	                    <tr>
+	                        <th>Name</th>
+	                        <th>Market Type</th>
+	                        <th>Bet Amount</th>
+	                        <th>Win amount</th>
+	                        <th>Created Date</th>
+	                        <th>Updated Date</th>
+	                        <th>View</th>
+	                    </tr>
+	                </thead>
+	                <tfoot>
+	                    <tr>
+	                       	<th>Name</th>
+	                        <th>Market Type</th>
+	                        <th>Bet Amount</th>
+	                        <th>Win amount</th>
+	                        <th>Created Date</th>
+	                        <th>Updated Date</th>
+	                        <th>View</th>
+	                    </tr>
+	                </tfoot>
+	                <tbody>
+	                {% for game_price in game_prices %}
+	                    <tr>
+	                        <td>{{game_price.name }}</td>
+	                        <td>
+
+	                        	{% if game_price.market_type == 0 %} 
+                            <div class="badge badge-primary badge-pill">Main</div>
+                            {% else %}
+                            <div class="badge badge-danger badge-pill">StarLine</div>    
+                            {% endif %} 
+
+	                        </td>
+	                        <td>{{ game_price.bet_amount}} </td>
+	                        <td>{{ game_price.win_amount}} </td>
+	                        <td>{{ game_price.created_date}} </td>
+	                        <td>{{ game_price.updated_date}} </td>
+	                        <td>
+                        	<a href="{% url 'bettingapp:game_price_update' game_price.pk %}">
+                            <button class="btn btn-datatable btn-icon btn-transparent-dark "><i class="fas fa-user-edit"></i>
+                            </button>
+                          </a>                  
+	                        </td>
+	                    </tr>
+	                {% endfor %}
+	                </tbody>
+	            </table>
+	        </div>
+	    	</div>
+			</div>
+		</div>
+	</main>
+
+
+{% endblock content %}

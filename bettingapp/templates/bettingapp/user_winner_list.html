@@ -1,0 +1,92 @@
+{% extends 'bettingapp/__base__.html' %}
+{% load static %}
+
+{% block content %}
+
+  <main>
+		<header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+		    <div class="container">
+		        <div class="page-header-content pt-4">
+		            <div class="row align-items-center justify-content-between">
+		                <div class="col-auto mt-4">
+
+		                    <h1 class="page-header-title">
+		                        <div class="page-header-icon"><i data-feather="filter"></i></div>
+		                       Winners List
+		                    </h1>
+		                    <div class="page-header-subtitle">List of winners in the Month</div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</header>
+<!-- Example DataTable for Dashboard Demo-->
+ 		<div class="container mt-n10">
+      <div class="card mb-4">
+            <div class="card-header">Winners Data Table</div>
+            {% if messages %}
+            {% for msg in messages %}
+            <div class="card-header text-end">
+              {{ msg }}
+            </div>
+            {% endfor %}
+            {% endif %}
+        		
+       	<div class="card-body">
+          <div class="datatable">
+              <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+	                <thead>
+	                    <tr>
+	                        <th>User Name</th>
+	                        <th>Market Name</th>
+	                        <th>Digit</th>
+	                        <th>Points</th>
+	                        <th>Win Points</th>
+	                        <th>Date</th>
+	                        <th>Time</th>
+	                        <th>View</th>
+	                    </tr>
+	                </thead>
+	                <tfoot>
+	                    <tr>
+	                        <th>User Name</th>
+	                        <th>Market Name</th> 
+	                        <th>Digit</th>
+	                        <th>Points</th>
+	                        <th>Win Points</th>
+	                        <th>Date</th>
+	                        <th>Time</th>
+	                        <th>View</th>
+	                    </tr>
+	                </tfoot>
+	                <tbody>
+	                {% for user_winner in user_winners %}
+	                    <tr>
+	                        <td>{{user_winner.user_id.username }}</td>
+	                        <td>{{user_winner.market_id.name}} </td>
+	                        <td>{{ user_winner.bidding_digit}} </td>
+	                        <td>{{ user_winner.bidding_points}} </td>
+	                         <td>{{ user_winner.win_bidding_digit }} </td>
+	                        <td>{{ user_winner.bidding_date}} </td>
+	                        <td>{{ user_winner.bidding_time}} </td>
+	                       
+
+	                        <td>
+	                        	<a href="#">
+	                            	<button class="btn btn-datatable btn-icon btn-transparent-dark ">
+	                            	<i class="fas fa-eye"></i>
+	                            </button>
+	                          </a>                  
+	                        </td>
+	                    </tr>
+	                {% endfor %}
+	                </tbody>
+	            </table>
+	        </div>
+	    	</div>
+			</div>
+		</div>
+	</main>
+
+
+{% endblock content %}
